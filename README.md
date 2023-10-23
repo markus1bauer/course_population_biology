@@ -1,6 +1,6 @@
 # Course Population Biology
 
-09.10.2023
+23.10.2023
 
 Data and code for exercises
 
