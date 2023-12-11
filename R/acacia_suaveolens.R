@@ -70,7 +70,8 @@ data %>%
   slice(-1) %>%
   ggplot(aes(x = age, y = number)) +
   geom_point() +
-  geom_smooth(method = "lm", formula = y ~ log(x)) +
+  #geom_smooth(method = "lm", formula = y ~ log(x)) +
+  geom_smooth(method = "loess", span = .9) +
   theme_adjusted() +
   labs(y = "Number of Individuals [#]", x = "Age in years")
 
@@ -78,6 +79,25 @@ data %>%
   slice(-1) %>%
   ggplot(aes(x = age, y = seeds)) +
   geom_point() +
-  geom_smooth(method = "lm", formula = y ~ log(x)) +
+  #geom_smooth(method = "lm", formula = y ~ log(x)) +
+  geom_smooth(method = "loess", span = 1.5) +
   theme_adjusted() +
   labs(y = "Seeds per individual [#]", x = "Age in years")
+
+
+
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# B Save ######################################################################
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+ggsave(
+  here("outputs", "figures", "acacia_suaveolens_survivorship_curve.tiff"),
+  dpi = 300, width = 12, height = 8.5, units = "cm"
+)
+
+ggsave(
+  here("outputs", "figures", "acacia_suaveolens_fecundity_curve.tiff"),
+  dpi = 300, width = 12, height = 8.5, units = "cm"
+)
