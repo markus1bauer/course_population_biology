@@ -104,7 +104,7 @@ graph_f <- ggplot(data = tibble(x = 3), aes(x)) +
     breaks = seq(0, 10, by = 1), limits = c(0, 10), expand = c(0, 0)
   ) +
   scale_x_continuous(
-    breaks = seq(0, 10, by = 1), limits = c(0, 5), expand = c(0, 0)
+    breaks = seq(0, 10, by = 1), limits = c(0, 6), expand = c(0, 0)
   ) +
   labs(y = expression(N[t+1]), x = expression(t)) +
   theme_mb()
@@ -115,7 +115,13 @@ graph_f <- ggplot(data = tibble(x = 3), aes(x)) +
 
 graph_a +
   graph_b + graph_c + graph_d + graph_e + graph_f +
-  plot_layout(nrow = 2, guides = "keep")
+  plot_layout(nrow = 2, guides = "keep") +
+  plot_annotation(tag_levels = "A")
+
+graph_f +
+  graph_f + graph_f + graph_f + graph_f +
+  plot_layout(nrow = 2, guides = "keep") +
+  plot_annotation(tag_levels = "A")
 
 
 
@@ -125,7 +131,11 @@ graph_a +
 
 
 ggsave(
-  here("outputs", "figures", "cob_webbing.tiff"),
+  here("outputs", "figures", "cob_webbing_recruitement.tiff"),
   dpi = 300, width = 19, height = 12, units = "cm"
 )
 
+ggsave(
+  here("outputs", "figures", "cob_webbing_dynamics.tiff"),
+  dpi = 300, width = 19, height = 12, units = "cm"
+)
